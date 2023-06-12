@@ -1,4 +1,3 @@
-```
 <a name="readme-top"></a>
 <br />
 <div align="center">
@@ -74,23 +73,20 @@ This section should list any major frameworks/libraries used to bootstrap your p
 
 ### Prerequisites
 
-```
+
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
-<!-- USAGE EXAMPLES -->
 
 ## Usage
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
-<!-- ROADMAP -->
 
 ## Roadmap
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
-<!-- CONTRIBUTING -->
 
 ## Contributing
 
@@ -100,7 +96,6 @@ Distributed under the MIT License. See `LICENSE.txt` for more information.
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
-<!-- CONTACT -->
 
 ## Contact
 
@@ -110,7 +105,3 @@ Project Link: [https://github.com/ilyesOussama/create-lens-dapp](https://github.
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
-<!-- MARKDOWN LINKS & IMAGES -->
-
-
-<!-- https://www.markdownguide.org/basic-syntax/#reference-style-links -
