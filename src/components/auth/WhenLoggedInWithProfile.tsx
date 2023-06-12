@@ -5,6 +5,7 @@ import {
   WalletData,
 } from "@lens-protocol/react-web";
 import { ReactNode } from "react";
+import AvatarDropdown from "../profile/ProfileAvatarWithDropDown";
 
 type LoggedInConfig = {
   wallet: WalletData;
@@ -16,8 +17,10 @@ export type WhenLoggedInWithProfileProps = {
 };
 
 export const WhenLoggedInWithProfile = ({
-  children,
-}: WhenLoggedInWithProfileProps) => {
+  handleLogout,
+}: {
+  handleLogout?: () => void;
+}) => {
   const { data: wallet, loading: walletLoading } = useActiveWallet();
   const { data: profile, error, loading: profileLoading } = useActiveProfile();
 
@@ -34,5 +37,5 @@ export const WhenLoggedInWithProfile = ({
     return null;
   }
 
-  return <>{children({ wallet, profile })}</>;
+  return <AvatarDropdown profileId={profile.id} logout={handleLogout} />;
 };

@@ -1,4 +1,6 @@
 import {
+  ProfileId,
+  useActiveProfile,
   useWalletLogin,
   useWalletLogout,
 } from "@lens-protocol/react-web";
@@ -10,6 +12,7 @@ import { InjectedConnector } from "wagmi/connectors/injected";
 import { WhenLoggedInWithProfile } from "./WhenLoggedInWithProfile";
 import { WhenLoggedOut } from "./WhenLoggedOut";
 import { Button } from "../ui/button";
+import AvatarDropdown from "../profile/ProfileAvatarWithDropDown";
 
 export function LoginButton({ handle }: { handle?: string }) {
   const {
@@ -44,19 +47,15 @@ export function LoginButton({ handle }: { handle?: string }) {
     await disconnectAsync();
   };
 
+  const { data: profile } = useActiveProfile();
+
   useEffect(() => {
     if (loginError) toast.error(loginError.message);
   }, [loginError]);
 
   return (
     <>
-      <WhenLoggedInWithProfile>
-        {() => (
-          <Button onClick={onLogoutClick} disabled={isLogoutPending}>
-            Log out
-          </Button>
-        )}
-      </WhenLoggedInWithProfile>
+      <WhenLoggedInWithProfile handleLogout={onLogoutClick} />
 
       <WhenLoggedOut>
         <Button onClick={onLoginClick} disabled={isLoginPending}>
