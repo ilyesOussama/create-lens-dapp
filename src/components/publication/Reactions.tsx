@@ -85,9 +85,9 @@ const Reactions = ({
           <Tooltip>
             <TooltipTrigger className="z-10">
               {isLikedByMe === "UPVOTE" ? (
-                <AiFillHeart className="w-8 h-8 fill-red-400 hover:fill-red-400" />
+                <AiFillHeart className="w-8 h-8 fill-red-400 hover:scale-110" />
               ) : (
-                <AiOutlineHeart className="w-8 h-8 hover:fill-red-400" />
+                <AiOutlineHeart className="w-8 h-8 hover:scale-110" />
               )}
             </TooltipTrigger>
             <TooltipContent>
@@ -101,9 +101,9 @@ const Reactions = ({
           <Tooltip>
             <TooltipTrigger>
               {isMirroedByMe ? (
-                <Repeat2 className="w-8 h-8 fill-red-400 hover:fill-blue-400" />
+                <Repeat2 className="w-8 h-8 fill-red-400 hover:scale-110" />
               ) : (
-                <Repeat2 className="w-8 h-8 hover:fill-blue-400" />
+                <Repeat2 className="w-8 h-8 hover:scale-110" />
               )}
             </TooltipTrigger>
             <TooltipContent>
@@ -117,9 +117,9 @@ const Reactions = ({
           <Tooltip>
             <TooltipTrigger>
               {isMirroedByMe ? (
-                <HiCollection className="w-8 h-8 fill-red-200 hover:fill-emerald-400" />
+                <HiCollection className="w-8 h-8 fill-red-200 hover:scale-110" />
               ) : (
-                <HiOutlineCollection className="w-8 h-8 hover:fill-emerald-400" />
+                <HiOutlineCollection className="w-8 h-8 hover:scale-110" />
               )}
             </TooltipTrigger>
             <TooltipContent>
