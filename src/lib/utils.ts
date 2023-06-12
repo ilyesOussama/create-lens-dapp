@@ -21,6 +21,23 @@ export const returnIpfsPathOrUrl = (
   }
 };
 
+export const getSubstring = (string, length = 130) => {
+  if (string.length <= length) {
+    return string;
+  } else {
+    return `${string.substring(0, length)}...`;
+  }
+};
+
+export const formatHandleColors = (text: string, link: string) => {
+  text = text.replaceAll(".lens", "");
+  text = text.replace(/(https\S+)/g, `<span style="color: #AEF359;">$1</span>`);
+  return text.replace(
+    /@(\w+)/g,
+    `<a href="${link}" style="color: #AEF359;">@$1</a>`
+  );
+};
+
 export const formatProfilePictures = (profiles: Profile[]) => {
   return profiles.map((profile) => {
     let { picture, coverPicture } = profile;
