@@ -9,6 +9,7 @@ const PublicationComments = ({
   const { data, error, loading } = useComments({
     commentsOf: publicationId,
   });
+
   if (error) {
     return <div>Error</div>;
   }
@@ -16,12 +17,17 @@ const PublicationComments = ({
   if (loading) {
     return <div>Loading</div>;
   }
+
   return (
-    <div>
-      <h2>Comments</h2>
+    <ul className="flex flex-col gap-2 rounded-sm border border-gray-200 dark:border-gray-700 p-4">
       {data &&
-        data?.map(({ id, metadata }) => <div key={id}>{metadata.content}</div>)}
-    </div>
+        data?.map(({ id, metadata }) => (
+          <li key={id}>
+            <p className="py-2">{metadata.content}</p>
+            <hr />
+          </li>
+        ))}
+    </ul>
   );
 };
 
