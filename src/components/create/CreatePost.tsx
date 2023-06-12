@@ -38,11 +38,11 @@ const CreatePost = ({ publisher }: { publisher: ProfileOwnedByMe }) => {
   }
 
   return (
-    <div>
+    <div className="flex flex-col items-center gap-2">
       <input
         placeholder="Create a post"
         onChange={(e) => setData(e.target.value)}
-        className="text-black px-2 py-1"
+        className="p-2 rounded-sm"
       />
       <Button onClick={createPost}>Create Post</Button>
       {transaction && (

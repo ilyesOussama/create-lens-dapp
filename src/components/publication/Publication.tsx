@@ -46,7 +46,6 @@ const Publication = ({ publicationId }: { publicationId: PublicationId }) => {
         media.original.mimeType === "image/gif"
       ) {
         media.type = "image";
-        console.log(media.type, "mt");
       }
       if (
         media.original.mimeType === "video/mp4" ||
@@ -55,7 +54,6 @@ const Publication = ({ publicationId }: { publicationId: PublicationId }) => {
         media.original.mimeType === "video/MP2T"
       ) {
         media.type = "video";
-        console.log(media.type, "mt");
       }
       if (
         media.original.mimeType === "audio/mpeg" ||
@@ -63,7 +61,6 @@ const Publication = ({ publicationId }: { publicationId: PublicationId }) => {
         media.original.mimeType === "audio/mp3"
       ) {
         media.type = "audio";
-        console.log(media.type, "mt");
       }
       mediaOriginalUrl = returnIpfsPathOrUrl(media.original.url);
     }

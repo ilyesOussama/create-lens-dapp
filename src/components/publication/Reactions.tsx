@@ -73,8 +73,6 @@ const Reactions = ({
     collect();
   };
 
-  console.log(isMirroedByMe);
-
   return (
     <ul className="flex flex-row justify-between">
       <li
