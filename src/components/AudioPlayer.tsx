@@ -4,7 +4,7 @@ import { getSubstring } from "@/lib/utils";
 import { AiOutlinePause, AiOutlinePlayCircle } from "react-icons/ai";
 import Image from "next/image";
 
-export function AudioPlayer({ publication, url, cover }) {
+const AudioPlayer = ({ publication, url, cover }) => {
   const [isPlaying, setIsPlaying] = useState(false);
 
   function updateIsPlaying() {
@@ -53,8 +53,6 @@ export function AudioPlayer({ publication, url, cover }) {
       </div>
     </div>
   );
-}
+};
 
-function playIconContainerStyle(bgColor) {
-  return `rounded-full w-16 h-16 flex items-center justify-center cursor-pointer transition-opacity duration-250 hover:opacity-90 ${bgColor}`;
-}
+export { AudioPlayer };

@@ -15,4 +15,4 @@ const ThemeButton = () => {
   );
 };
 
-export default ThemeButton;
+export { ThemeButton };

@@ -1,13 +1,15 @@
+"use client";
+
 import {
   ContentPublication,
   ProfileId,
+  ProfileOwnedByMe,
   PublicationId,
   useProfilesOwnedByMe,
   usePublication,
 } from "@lens-protocol/react-web";
 import Image from "next/image";
-import PublicationComments from "./PublicationComments";
-import Reactions from "./Reactions";
+import { Reactions } from "./Reactions";
 import {
   formatHandleColors,
   getSubstring,
@@ -17,13 +19,19 @@ import ReactPlayer from "react-player";
 import ReactMarkdown from "react-markdown";
 import rehypeRaw from "rehype-raw";
 import { AudioPlayer } from "../AudioPlayer";
+import { ProfileAvatar } from "../profile";
+import Link from "next/link";
 
-const Publication = ({ publicationId }: { publicationId: PublicationId }) => {
+const Publication = ({
+  publicationId,
+  publisher,
+}: {
+  publicationId: PublicationId;
+  publisher?: ProfileOwnedByMe;
+}) => {
   const { data, error, loading } = usePublication({
     publicationId,
   });
-
-  const { data: publisher } = useProfilesOwnedByMe();
 
   if (error) {
     return <div>Error</div>;
@@ -71,12 +79,22 @@ const Publication = ({ publicationId }: { publicationId: PublicationId }) => {
   }
 
   return (
-    <div>
-      <div className="max-w-5xl p-4 border border-1 border-gray-300 dark:border-gray-700 rounded-sm flex flex-col gap-4">
-        <ReactMarkdown rehypePlugins={[rehypeRaw]}>
-          {data?.metadata?.content &&
-            formatHandleColors(getSubstring(data?.metadata?.content, 339), "/")}
-        </ReactMarkdown>
+    <Link href={`/publication/${data.id}`}>
+      <div className="max-w-5xl p-4 rounded-sm flex flex-col gap-4">
+        <div className="flex flex-row gap-2">
+          <Link href={`/profile/${data.profile.id}`}>
+            <ProfileAvatar profileId={data.profile.id} />
+          </Link>
+          <div>
+            <ReactMarkdown rehypePlugins={[rehypeRaw]}>
+              {data?.metadata?.content &&
+                formatHandleColors(
+                  getSubstring(data?.metadata?.content, 339),
+                  "/"
+                )}
+            </ReactMarkdown>
+          </div>
+        </div>
         {media && media.type == "image" && (
           <div>
             <Image
@@ -106,14 +124,14 @@ const Publication = ({ publicationId }: { publicationId: PublicationId }) => {
 
         {publisher && (
           <Reactions
-            publisher={publisher[0]}
+            publisher={publisher}
             profileId={"0x01821f" as ProfileId}
             publication={data as ContentPublication}
           />
         )}
       </div>
-    </div>
+    </Link>
   );
 };
 
-export default Publication;
+export { Publication };

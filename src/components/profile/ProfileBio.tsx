@@ -1,13 +1,7 @@
-import { ProfileId, useProfile } from "@lens-protocol/react-web";
+import { Profile, ProfileId, useProfile } from "@lens-protocol/react-web";
 
-const ProfileBio = ({ profileId }: { profileId: ProfileId }) => {
-  const { data, error, loading } = useProfile({
-    profileId: profileId,
-  });
-  if (loading) return <div>Loading</div>;
-
-  if (error) return <div>Error</div>;
-  return <div>{data?.bio}</div>;
+const ProfileBio = ({ profile }: { profile: Profile }) => {
+  return <div>{profile?.bio}</div>;
 };
 
-export default ProfileBio;
+export { ProfileBio };

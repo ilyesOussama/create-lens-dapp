@@ -15,4 +15,4 @@ const FollowingAndFollowers = ({ profileId }: { profileId: ProfileId }) => {
   );
 };
 
-export default FollowingAndFollowers;
+export { FollowingAndFollowers };

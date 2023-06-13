@@ -1,3 +1,4 @@
+import { cn } from "@/lib/utils";
 import { PublicationId, useComments } from "@lens-protocol/react-web";
 import React from "react";
 
@@ -21,14 +22,20 @@ const PublicationComments = ({
   return (
     <ul className="flex flex-col gap-2 rounded-sm border border-gray-200 dark:border-gray-700 p-4">
       {data &&
-        data?.map(({ id, metadata }) => (
-          <li key={id}>
-            <p className="py-2">{metadata.content}</p>
-            <hr />
+        data?.map(({ id, metadata }, index) => (
+          <li
+            key={id}
+            className={cn(
+              index !== data.length - 1 &&
+                "border-b border-gray-200 dark:border-gray-700",
+              "py-2"
+            )}
+          >
+            <p>{metadata.content}</p>
           </li>
         ))}
     </ul>
   );
 };
 
-export default PublicationComments;
+export { PublicationComments };

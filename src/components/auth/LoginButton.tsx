@@ -1,20 +1,14 @@
-import {
-  ProfileId,
-  useActiveProfile,
-  useWalletLogin,
-  useWalletLogout,
-} from "@lens-protocol/react-web";
+import { useWalletLogin, useWalletLogout } from "@lens-protocol/react-web";
 import { useEffect } from "react";
-import toast, { Toaster } from "react-hot-toast";
+import toast from "react-hot-toast";
 import { useAccount, useConnect, useDisconnect } from "wagmi";
 import { InjectedConnector } from "wagmi/connectors/injected";
 
 import { WhenLoggedInWithProfile } from "./WhenLoggedInWithProfile";
 import { WhenLoggedOut } from "./WhenLoggedOut";
 import { Button } from "../ui/button";
-import AvatarDropdown from "../profile/ProfileAvatarWithDropDown";
 
-export function LoginButton({ handle }: { handle?: string }) {
+const LoginButton = ({ handle }: { handle?: string }) => {
   const {
     execute: login,
     error: loginError,
@@ -47,8 +41,6 @@ export function LoginButton({ handle }: { handle?: string }) {
     await disconnectAsync();
   };
 
-  const { data: profile } = useActiveProfile();
-
   useEffect(() => {
     if (loginError) toast.error(loginError.message);
   }, [loginError]);
@@ -64,4 +56,6 @@ export function LoginButton({ handle }: { handle?: string }) {
       </WhenLoggedOut>
     </>
   );
-}
+};
+
+export { LoginButton };

@@ -5,7 +5,7 @@ export type WhenLoggedOutProps = {
   children: ReactNode;
 };
 
-export function WhenLoggedOut({ children }: WhenLoggedOutProps) {
+const WhenLoggedOut = ({ children }: WhenLoggedOutProps) => {
   const { data: wallet, loading } = useActiveWallet();
 
   if (loading || wallet !== null) {
@@ -13,4 +13,6 @@ export function WhenLoggedOut({ children }: WhenLoggedOutProps) {
   }
 
   return <>{children}</>;
-}
+};
+
+export { WhenLoggedOut };

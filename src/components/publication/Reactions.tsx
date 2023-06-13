@@ -30,7 +30,13 @@ const Reactions = ({
   profileId: ProfileId;
   publisher: ProfileOwnedByMe;
 }) => {
-  const [isLikedByMe, setIsLikedByMe] = useState(publication.reaction);
+  const [isLikedByMe, setIsLikedByMe] = useState<boolean | null>(
+    publication.reaction === "UPVOTE"
+  );
+  const [isDislikedByMe, setIsDislikedByMe] = useState<boolean | null>(
+    publication.reaction === "DOWNVOTE"
+  );
+
   const [isMirroedByMe, setisMirroedByMe] = useState(
     publication.isMirroredByMe
   );
@@ -55,10 +61,12 @@ const Reactions = ({
   });
 
   const likePressHandler = () => {
-    addReaction({ publication, reactionType: ReactionType.UPVOTE });
+    addReaction({ publication, reactionType: ReactionType.UPVOTE }).then(() => {
+      setIsLikedByMe(true);
+    });
   };
 
-  //WORK ON THIS
+  //TODO WORK ON THIS
   const removeLikeHandler = () => {
     console.log("removeLikeHandler");
   };
@@ -76,22 +84,20 @@ const Reactions = ({
   return (
     <ul className="flex flex-row justify-between">
       <li
-        onClick={
-          isLikedByMe === "UPVOTE" ? removeLikeHandler : likePressHandler
-        }
+        onClick={isLikedByMe ? removeLikeHandler : likePressHandler}
         className="cursor-pointer"
       >
         <TooltipProvider>
           <Tooltip>
             <TooltipTrigger className="z-10">
-              {isLikedByMe === "UPVOTE" ? (
+              {isLikedByMe ? (
                 <AiFillHeart className="w-8 h-8 fill-red-400 hover:scale-110" />
               ) : (
                 <AiOutlineHeart className="w-8 h-8 hover:scale-110" />
               )}
             </TooltipTrigger>
             <TooltipContent>
-              <p>{isLikedByMe === "UPVOTE" ? "Unlike" : "Like"}</p>
+              <p>{isLikedByMe ? "Unlike" : "Like"}</p>
             </TooltipContent>
           </Tooltip>
         </TooltipProvider>
@@ -132,4 +138,4 @@ const Reactions = ({
   );
 };
 
-export default Reactions;
+export { Reactions };

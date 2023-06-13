@@ -5,7 +5,7 @@ import {
   WalletData,
 } from "@lens-protocol/react-web";
 import { ReactNode } from "react";
-import AvatarDropdown from "../profile/ProfileAvatarWithDropDown";
+import { AvatarDropdown } from "../profile";
 
 type LoggedInConfig = {
   wallet: WalletData;
@@ -16,7 +16,7 @@ export type WhenLoggedInWithProfileProps = {
   children: (config: LoggedInConfig) => ReactNode;
 };
 
-export const WhenLoggedInWithProfile = ({
+const WhenLoggedInWithProfile = ({
   handleLogout,
 }: {
   handleLogout?: () => void;
@@ -39,3 +39,5 @@ export const WhenLoggedInWithProfile = ({
 
   return <AvatarDropdown profileId={profile.id} logout={handleLogout} />;
 };
+
+export { WhenLoggedInWithProfile };

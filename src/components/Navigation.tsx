@@ -1,12 +1,13 @@
 "use client";
 
-import ThemeButton from "./ThemeButton";
-import { LoginButton } from "./auth";
+import { ThemeButton } from "@/components/ThemeButton";
+import { LoginButton } from "@/components/auth";
+import Link from "next/link";
 
 const Navigation = () => {
   return (
     <nav className="flex flex-row justify-between items-center h-16 container">
-      <div>Logo</div>
+      <Link href="/">Logo</Link>
       <div className="flex flex-row">
         <LoginButton />
         <ThemeButton />
@@ -15,4 +16,4 @@ const Navigation = () => {
   );
 };
 
-export default Navigation;
+export { Navigation };

@@ -33,4 +33,4 @@ const FollowButton = ({
   );
 };
 
-export default FollowButton;
+export { FollowButton };

@@ -29,13 +29,18 @@ const AvatarDropdown = ({
 
   if (error) return <div>Error</div>;
 
-  const src = convertIpfsUrl(data?.picture?.original?.url);
-
   return (
     <DropdownMenu>
       <DropdownMenuTrigger>
         <Avatar onClick={onClick}>
-          <AvatarImage src={src} alt={data.handle} />
+          <AvatarImage
+            src={
+              data?.picture?.__typename === "NftImage"
+                ? data?.picture?.uri
+                : data?.picture?.original?.url
+            }
+            alt={data.handle}
+          />
           <AvatarFallback>{data?.handle}</AvatarFallback>
         </Avatar>
       </DropdownMenuTrigger>
@@ -52,4 +57,4 @@ const AvatarDropdown = ({
   );
 };
 
-export default AvatarDropdown;
+export { AvatarDropdown };
