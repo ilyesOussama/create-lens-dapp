@@ -7,6 +7,7 @@ import {
 } from "@lens-protocol/react-web";
 import { Button } from "../ui/button";
 import { useState } from "react";
+import { Editor } from "../textEditor";
 
 const CreateComment = ({
   publicationId,
@@ -48,11 +49,7 @@ const CreateComment = ({
 
   return (
     <div className="flex flex-col gap-2 items-center">
-      <input
-        placeholder="Create a comment"
-        onChange={(e) => setData(e.target.value)}
-        className="p-2 rounded-sm"
-      />
+      <Editor onDataChange={setData} />
       <Button onClick={createPost}>Create Comment</Button>
       {transaction && (
         <a target="_blank" rel="no-opener" href={transaction}>

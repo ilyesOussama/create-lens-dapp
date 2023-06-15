@@ -5,6 +5,7 @@ import {
 } from "@lens-protocol/react-web";
 import { Button } from "../ui/button";
 import { useState } from "react";
+import { Editor } from "../textEditor";
 
 const CreatePost = ({ publisher }: { publisher: ProfileOwnedByMe }) => {
   const [data, setData] = useState("");
@@ -39,11 +40,7 @@ const CreatePost = ({ publisher }: { publisher: ProfileOwnedByMe }) => {
 
   return (
     <div className="flex flex-col items-center gap-2">
-      <input
-        placeholder="Create a post"
-        onChange={(e) => setData(e.target.value)}
-        className="p-2 rounded-sm"
-      />
+      <Editor onDataChange={setData} />
       <Button onClick={createPost}>Create Post</Button>
       {transaction && (
         <a target="_blank" rel="no-opener" href={transaction}>
