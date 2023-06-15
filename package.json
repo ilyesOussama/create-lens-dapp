@@ -30,6 +30,7 @@
     "eslint": "8.42.0",
     "eslint-config-next": "13.4.4",
     "ethers": "5.7.2",
+    "framer-motion": "^10.12.16",
     "lexical": "^0.11.1",
     "lucide": "^0.241.0",
     "lucide-react": "^0.241.0",
