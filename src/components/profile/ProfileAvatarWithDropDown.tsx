@@ -9,8 +9,6 @@ import {
 
 import { ProfileId, useProfile } from "@lens-protocol/react-web";
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
-import { convertIpfsUrl } from "@/lib/convertIpfsUrl";
-import { log } from "console";
 import Link from "next/link";
 
 const AvatarDropdown = ({

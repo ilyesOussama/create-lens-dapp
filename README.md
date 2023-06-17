@@ -1,5 +1,6 @@
-`<a name="readme-top"></a>`
-`<br />`
+<a name="readme-top">
+</a>
+<br />
 
 <div align="center">
   <a href="https://github.com/ilyesOussama/create-lens-dapp">
@@ -9,7 +10,7 @@
 <h3 align="center">Create-Lens-Dapp</h3>
 
 <p align="center">
-	The fastest way to get you up and running building on top of the Lens protocol!
+	The fastest way to get you up and running building on top of Lens protocol!
     <br />
     <br />
     <a href="https://create-lens-dapp.vercel.app">View Demo</a>
@@ -65,11 +66,15 @@ import  LoginButton  from  "@/components/auth/LoginButton";
 ```
 <Publications profileId={profileId} />
 <Publication publicationId={publicationId} />
-//Publication With reactions
-<Publication publicationId={publicationID} publisher={publisher} />
-<PublicationComments publicationId={publicationID} />
 ```
 
+#### Profile
+```
+<Profile profileId={profileId} />
+<Profile handle={handle} />
+<ProfileAvatar profileId={profileId}/>
+<ProfileBio profile={profileprofile}>
+```
 #### Create
 
 ```
