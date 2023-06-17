@@ -12,11 +12,11 @@ dependencies:
     specifier: ^3.1.0
     version: 3.1.0(react-hook-form@7.44.3)
   '@lens-protocol/react-web':
-    specifier: ^1.1.0
-    version: 1.1.0(@ethersproject/contracts@5.7.0)(@ethersproject/hash@5.7.0)(@ethersproject/providers@5.7.2)(@ethersproject/wallet@5.7.0)(ethers@5.7.2)(react-dom@18.2.0)(react@18.2.0)(zod@3.21.4)
+    specifier: ^1.1.1
+    version: 1.1.1(@ethersproject/contracts@5.7.0)(@ethersproject/hash@5.7.0)(@ethersproject/providers@5.7.2)(@ethersproject/wallet@5.7.0)(ethers@5.7.2)(react-dom@18.2.0)(react@18.2.0)(zod@3.21.4)
   '@lens-protocol/wagmi':
-    specifier: ^1.1.0
-    version: 1.1.0(@lens-protocol/react-web@1.1.0)(ethers@5.7.2)(wagmi@0.12.13)
+    specifier: ^1.1.1
+    version: 1.1.1(@lens-protocol/react-web@1.1.1)(ethers@5.7.2)(wagmi@0.12.13)
   '@lexical/react':
     specifier: ^0.11.1
     version: 0.11.1(lexical@0.11.1)(react-dom@18.2.0)(react@18.2.0)(yjs@13.6.4)
@@ -735,8 +735,8 @@ packages:
     resolution: {integrity: sha512-TQ21IjcZOw/scqypaVFY3jHVqI7X7Hta3qN/us6FvTol3AY06UmrhhXGww0E9xHmAbdX241ddwXEiMBSQZFr9g==}
     dev: false
 
-  /@lens-protocol/api-bindings@0.8.0(ethers@5.7.2)(react-dom@18.2.0)(react@18.2.0):
-    resolution: {integrity: sha512-O78sRg2D6zIKyaRAIytFrDaByWgi2MYJ57LnJ0A2enyIE2iHTBO/QBxfHIsVppKAUcSi2tqmS5gcG2ZRlSIW9A==}
+  /@lens-protocol/api-bindings@0.8.1(ethers@5.7.2)(react-dom@18.2.0)(react@18.2.0):
+    resolution: {integrity: sha512-Cfu7XvbF3YQPYfNDrZviIgvveRdw0/+9IjdSKtQiAsNOpTShunzP/85Z/nD17ezzUDR5bV2AmYVK/5hIv/HfzA==}
     peerDependencies:
       '@faker-js/faker': ^7.6.0
       react: ^18.2.0
@@ -804,8 +804,8 @@ packages:
       - ethers
     dev: false
 
-  /@lens-protocol/gated-content@0.2.2(@ethersproject/contracts@5.7.0)(@ethersproject/hash@5.7.0)(@ethersproject/providers@5.7.2)(@ethersproject/wallet@5.7.0)(ethers@5.7.2)(react-dom@18.2.0)(react@18.2.0)(zod@3.21.4):
-    resolution: {integrity: sha512-joCHPjVyYmsXHjmIwc8Oh/tsXc7MRxNS4obxXRGCWRnrj35NvixpqCbG2msYnb/TKgj7A7/8ielRaU0DyecDXg==}
+  /@lens-protocol/gated-content@0.2.3(@ethersproject/contracts@5.7.0)(@ethersproject/hash@5.7.0)(@ethersproject/providers@5.7.2)(@ethersproject/wallet@5.7.0)(ethers@5.7.2)(react-dom@18.2.0)(react@18.2.0)(zod@3.21.4):
+    resolution: {integrity: sha512-0581S7Rn5jEzCSm1+H7cTrzYH8n0gQ9iaudzrGeWLmxB6E75QiqJ9e/u2vuNQuOQxlbHYxCesEt/Kb8Lg5RrkA==}
     peerDependencies:
       '@ethersproject/contracts': ^5.7.0
       '@ethersproject/hash': ^5.7.0
@@ -820,7 +820,7 @@ packages:
       '@ethersproject/hash': 5.7.0
       '@ethersproject/providers': 5.7.2
       '@ethersproject/wallet': 5.7.0
-      '@lens-protocol/api-bindings': 0.8.0(ethers@5.7.2)(react-dom@18.2.0)(react@18.2.0)
+      '@lens-protocol/api-bindings': 0.8.1(ethers@5.7.2)(react-dom@18.2.0)(react@18.2.0)
       '@lens-protocol/domain': 0.8.0(ethers@5.7.2)
       '@lens-protocol/shared-kernel': 0.8.0(ethers@5.7.2)
       '@lens-protocol/storage': 0.7.2(ethers@5.7.2)
@@ -851,15 +851,15 @@ packages:
       - utf-8-validate
     dev: false
 
-  /@lens-protocol/react-web@1.1.0(@ethersproject/contracts@5.7.0)(@ethersproject/hash@5.7.0)(@ethersproject/providers@5.7.2)(@ethersproject/wallet@5.7.0)(ethers@5.7.2)(react-dom@18.2.0)(react@18.2.0)(zod@3.21.4):
-    resolution: {integrity: sha512-adCpOZ2gzpyqqwot/2sYClf87gi+iIlMUZZPzBgecVlwbLZtHE6ZRjW7n5FgSIFJV83LIwPtwd73RC/FQb1x/A==}
+  /@lens-protocol/react-web@1.1.1(@ethersproject/contracts@5.7.0)(@ethersproject/hash@5.7.0)(@ethersproject/providers@5.7.2)(@ethersproject/wallet@5.7.0)(ethers@5.7.2)(react-dom@18.2.0)(react@18.2.0)(zod@3.21.4):
+    resolution: {integrity: sha512-hU8KLN7gVvPyiHxzVHdx/dHL18KKJMLT73ayhZYfBMS0Ka7ygnGgaTTkqS5sNA+3ZH1luvMkMTp99cESmAm9sA==}
     peerDependencies:
       ethers: ^5.7.2
       react: ^18.2.0
     dependencies:
-      '@lens-protocol/api-bindings': 0.8.0(ethers@5.7.2)(react-dom@18.2.0)(react@18.2.0)
-      '@lens-protocol/gated-content': 0.2.2(@ethersproject/contracts@5.7.0)(@ethersproject/hash@5.7.0)(@ethersproject/providers@5.7.2)(@ethersproject/wallet@5.7.0)(ethers@5.7.2)(react-dom@18.2.0)(react@18.2.0)(zod@3.21.4)
-      '@lens-protocol/react': 1.1.0(@ethersproject/contracts@5.7.0)(@ethersproject/hash@5.7.0)(@ethersproject/wallet@5.7.0)(ethers@5.7.2)(react-dom@18.2.0)(react@18.2.0)
+      '@lens-protocol/api-bindings': 0.8.1(ethers@5.7.2)(react-dom@18.2.0)(react@18.2.0)
+      '@lens-protocol/gated-content': 0.2.3(@ethersproject/contracts@5.7.0)(@ethersproject/hash@5.7.0)(@ethersproject/providers@5.7.2)(@ethersproject/wallet@5.7.0)(ethers@5.7.2)(react-dom@18.2.0)(react@18.2.0)(zod@3.21.4)
+      '@lens-protocol/react': 1.1.1(@ethersproject/contracts@5.7.0)(@ethersproject/hash@5.7.0)(@ethersproject/wallet@5.7.0)(ethers@5.7.2)(react-dom@18.2.0)(react@18.2.0)
       '@lens-protocol/shared-kernel': 0.8.0(ethers@5.7.2)
       '@lens-protocol/storage': 0.7.2(ethers@5.7.2)
       ethers: 5.7.2
@@ -887,8 +887,8 @@ packages:
       - zod
     dev: false
 
-  /@lens-protocol/react@1.1.0(@ethersproject/contracts@5.7.0)(@ethersproject/hash@5.7.0)(@ethersproject/wallet@5.7.0)(ethers@5.7.2)(react-dom@18.2.0)(react@18.2.0):
-    resolution: {integrity: sha512-qxYY6tMBfVnrael05lGyh1vPU0apDTaVEadTpr0dQB/Fq4vUHm3evKJt73ixEPFKozG8Yhqs8eAn6g3Va02mmA==}
+  /@lens-protocol/react@1.1.1(@ethersproject/contracts@5.7.0)(@ethersproject/hash@5.7.0)(@ethersproject/wallet@5.7.0)(ethers@5.7.2)(react-dom@18.2.0)(react@18.2.0):
+    resolution: {integrity: sha512-M2fxSr0zm9D+wQC3esOoe4PnZz6qVWc84X+PssFxRsFO/ppsG/au81JpM25MSSzb/zzUa5p3sCIjVGYlVHmvMw==}
     peerDependencies:
       ethers: ^5.7.2
       react: ^18.2.0
@@ -896,10 +896,10 @@ packages:
       '@apollo/client': 3.7.15(graphql@16.6.0)(react-dom@18.2.0)(react@18.2.0)
       '@ethersproject/abstract-signer': 5.7.0
       '@ethersproject/providers': 5.7.2
-      '@lens-protocol/api-bindings': 0.8.0(ethers@5.7.2)(react-dom@18.2.0)(react@18.2.0)
+      '@lens-protocol/api-bindings': 0.8.1(ethers@5.7.2)(react-dom@18.2.0)(react@18.2.0)
       '@lens-protocol/blockchain-bindings': 0.8.0(ethers@5.7.2)
       '@lens-protocol/domain': 0.8.0(ethers@5.7.2)
-      '@lens-protocol/gated-content': 0.2.2(@ethersproject/contracts@5.7.0)(@ethersproject/hash@5.7.0)(@ethersproject/providers@5.7.2)(@ethersproject/wallet@5.7.0)(ethers@5.7.2)(react-dom@18.2.0)(react@18.2.0)(zod@3.21.4)
+      '@lens-protocol/gated-content': 0.2.3(@ethersproject/contracts@5.7.0)(@ethersproject/hash@5.7.0)(@ethersproject/providers@5.7.2)(@ethersproject/wallet@5.7.0)(ethers@5.7.2)(react-dom@18.2.0)(react@18.2.0)(zod@3.21.4)
       '@lens-protocol/shared-kernel': 0.8.0(ethers@5.7.2)
       '@lens-protocol/storage': 0.7.2(ethers@5.7.2)
       ethers: 5.7.2
@@ -955,14 +955,14 @@ packages:
       - ethers
     dev: false
 
-  /@lens-protocol/wagmi@1.1.0(@lens-protocol/react-web@1.1.0)(ethers@5.7.2)(wagmi@0.12.13):
-    resolution: {integrity: sha512-SRITvha5sd1VKymY5QMpdHbCWrF/exIXqx+La0nto+kSyfcA44ofwmYz8gKXRy3mAlOoXpv91yXO6jd1kNF+Gw==}
+  /@lens-protocol/wagmi@1.1.1(@lens-protocol/react-web@1.1.1)(ethers@5.7.2)(wagmi@0.12.13):
+    resolution: {integrity: sha512-0C651r1NoZPUERpAB5lc856WZzYlDTWjo95E4v3r8D8FxVxgVR82ttTojJFih1p7Hq6fO656BEgBdDWawkfVEw==}
     peerDependencies:
-      '@lens-protocol/react-web': 1.1.0
+      '@lens-protocol/react-web': 1.1.1
       ethers: ^5.7.2
       wagmi: 0.12.7
     dependencies:
-      '@lens-protocol/react-web': 1.1.0(@ethersproject/contracts@5.7.0)(@ethersproject/hash@5.7.0)(@ethersproject/providers@5.7.2)(@ethersproject/wallet@5.7.0)(ethers@5.7.2)(react-dom@18.2.0)(react@18.2.0)(zod@3.21.4)
+      '@lens-protocol/react-web': 1.1.1(@ethersproject/contracts@5.7.0)(@ethersproject/hash@5.7.0)(@ethersproject/providers@5.7.2)(@ethersproject/wallet@5.7.0)(ethers@5.7.2)(react-dom@18.2.0)(react@18.2.0)(zod@3.21.4)
       '@lens-protocol/shared-kernel': 0.8.0(ethers@5.7.2)
       ethers: 5.7.2
       wagmi: 0.12.13(ethers@5.7.2)(react-dom@18.2.0)(react@18.2.0)(typescript@5.1.3)(zod@3.21.4)
