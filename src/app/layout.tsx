@@ -4,6 +4,7 @@ import { Inter } from "next/font/google";
 import Providers from "@/components/Providers";
 import { cn } from "@/lib/utils";
 import { Navigation } from "@/components/Navigation";
+import { Footer } from "@/components/Footer";
 const inter = Inter({ subsets: ["latin"] });
 
 export const metadata = {
@@ -22,6 +23,7 @@ export default function RootLayout({
         <body className={cn(inter.className, "bg-background  text-foreground")}>
           <Navigation />
           {children}
+          <Footer />
         </body>
       </Providers>
     </html>

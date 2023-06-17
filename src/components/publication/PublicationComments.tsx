@@ -1,6 +1,8 @@
 import { cn } from "@/lib/utils";
 import { PublicationId, useComments } from "@lens-protocol/react-web";
 import React from "react";
+import { Publication } from "./Publication";
+import Link from "next/link";
 
 const PublicationComments = ({
   publicationId,
@@ -25,7 +27,8 @@ const PublicationComments = ({
         <ul className="flex flex-col gap-2 rounded-sm border border-gray-200 dark:border-gray-700 p-4">
           <h2>Comments</h2>
           {data.map(({ id, metadata }, index) => (
-            <li
+            <Link
+              href={`/publication/${id}`}
               key={id}
               className={cn(
                 index !== data.length - 1 &&
@@ -33,8 +36,8 @@ const PublicationComments = ({
                 "py-2"
               )}
             >
-              <p>{metadata.content}</p>
-            </li>
+              <Publication publicationId={id} key={id} />
+            </Link>
           ))}
         </ul>
       )}

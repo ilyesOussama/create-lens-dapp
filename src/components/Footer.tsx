@@ -1,5 +1,9 @@
 const Footer = () => {
-  return <footer>&copy; {new Date().getFullYear()}</footer>;
+  return (
+    <footer className="py-8 text-center">
+      &copy; {new Date().getFullYear()}
+    </footer>
+  );
 };
 
 export { Footer };

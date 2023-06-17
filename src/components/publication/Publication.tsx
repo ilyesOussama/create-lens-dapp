@@ -105,8 +105,11 @@ const Publication = ({ publicationId }: { publicationId: PublicationId }) => {
                 <Link href={`/profile/${publication.profile?.id}`}>
                   <ProfileAvatar profileId={publication.profile?.id} />
                 </Link>
-                <div>
-                  <ReactMarkdown rehypePlugins={[rehypeRaw]}>
+                <div className="max-w-full">
+                  <ReactMarkdown
+                    rehypePlugins={[rehypeRaw]}
+                    className="text-clip"
+                  >
                     {publication?.metadata?.content &&
                       formatHandleColors(publication?.metadata?.content)}
                   </ReactMarkdown>
