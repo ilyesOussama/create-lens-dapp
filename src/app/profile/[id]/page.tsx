@@ -8,7 +8,11 @@ const ProfilePage = () => {
   const { id } = useParams();
   return (
     <div className="flex flex-col gap-4 border border-1 border-gray-200 dark:border-gray-700 container p-4 rounded-sm">
-      <Profile profileId={id as ProfileId} />
+      {id.startsWith("0x") ? (
+        <Profile profileId={id as ProfileId} />
+      ) : (
+        <Profile handle={id} />
+      )}
     </div>
   );
 };

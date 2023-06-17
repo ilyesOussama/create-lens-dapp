@@ -1,33 +1,23 @@
-import { ProfileId, useProfile } from "@lens-protocol/react-web";
+import { ProfileId } from "@lens-protocol/react-web";
 import React from "react";
-import { Publications } from "@/components/publication";
-import { ProfileBio } from "@/components/profile";
+import { ProfileByHandle, ProfileById } from "@/components/profile";
 
-const Profile = ({ profileId }: { profileId: ProfileId }) => {
-  const {
-    data: profile,
-    error,
-    loading,
-  } = useProfile({
-    profileId,
-  });
-
-  if (error) {
-    return <div>Error</div>;
+const Profile = ({
+  profileId,
+  handle,
+}: {
+  profileId?: ProfileId;
+  handle?: string;
+}) => {
+  if (profileId) {
+    return <ProfileById profileId={profileId} />;
   }
-  if (loading) {
-    return <div>Loading</div>;
+  if (handle) {
+    return <ProfileByHandle handle={handle} />;
   }
 
   return (
-    <div className="flex flex-col gap-2">
-      <h2>handle: {profile.handle}</h2>
-      <div>
-        Bio:
-        <ProfileBio profile={profile} />
-      </div>
-      <Publications profileId={profileId} />
-    </div>
+    <div className="p-4 bg-red-400">Please Provide a profileId or handle</div>
   );
 };
 
