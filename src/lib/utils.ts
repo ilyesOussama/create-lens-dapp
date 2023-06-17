@@ -29,12 +29,15 @@ export const getSubstring = (string, length = 130) => {
   }
 };
 
-export const formatHandleColors = (text: string, link: string) => {
+export const formatHandleColors = (text: string) => {
   text = text.replaceAll(".lens", "");
-  text = text.replace(/(https\S+)/g, `<span style="color: #AEF359;">$1</span>`);
+  text = text.replace(
+    /(https\S+)/g,
+    `<a target="__blank" style="color: #AEF359;">$1</a>`
+  );
   return text.replace(
     /@(\w+)/g,
-    `<a href="${link}" style="color: #AEF359;">@$1</a>`
+    `<a href="/profile/$1.lens" style="color: #AEF359;">@$1</a>`
   );
 };
 
