@@ -51,7 +51,7 @@ const Publications = ({
   }
 
   return (
-    <>
+    <div className="flex flex-col gap-4">
       <div className="mx-auto flex flex-col gap-4 border border-1 border-gray-200 dark:border-gray-700 rounded-sm">
         {publications?.map((publication, index) => {
           return (
@@ -87,7 +87,7 @@ const Publications = ({
           Load More
         </Button>
       )}
-    </>
+    </div>
   );
 };
 

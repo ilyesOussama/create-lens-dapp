@@ -38,7 +38,7 @@ const Feed = ({ limit = 10 }: { limit?: number }) => {
   if (error) return <div>Error: {error.message}</div>;
 
   return (
-    <>
+    <div className="flex flex-col gap-4">
       <div className="mx-auto flex flex-col gap-4 border border-1 border-gray-200 dark:border-gray-700 rounded-sm">
         {feedItems?.map(({ root }, index) => {
           return (
@@ -74,7 +74,7 @@ const Feed = ({ limit = 10 }: { limit?: number }) => {
           Load More
         </Button>
       )}
-    </>
+    </div>
   );
 };
 

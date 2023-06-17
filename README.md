@@ -41,10 +41,11 @@
 * [Shadcn/ui](https://ui.shadcn.com)
 
 ## Usage
+you can use this repository as a template.
 
 ```
-git clone https://github.com/ilyesOussama/create-lens-dapp
-cd create-lens-dapp
+git clone https://github.com/user-name/repository-name
+cd repository-name
 pnpm i
 ```
 
@@ -69,12 +70,14 @@ import  LoginButton  from  "@/components/auth/LoginButton";
 ```
 
 #### Profile
+
 ```
 <Profile profileId={profileId} />
 <Profile handle={handle} />
 <ProfileAvatar profileId={profileId}/>
 <ProfileBio profile={profileprofile}>
 ```
+
 #### Create
 
 ```

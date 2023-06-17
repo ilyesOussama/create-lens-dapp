@@ -19,11 +19,16 @@ export default function Home() {
 
   return (
     <main className="flex min-h-screen flex-col items-center justify-between p-24 gap-4">
-      <h1>
-        This is a demo of some the components provided by{" "}
-        <Link href="https://github.com/ilyesOussama/create-lens-dapp/">
+      <h1 className="text-2xl lg:text-3xl text-center">
+        This is a demo showcasing some of the
+        <Link
+          href="https://github.com/ilyesOussama/create-lens-dapp/"
+          target="_blank"
+          className="underline decoration-dashed text-green-600 dark:text-green-400 px-2"
+        >
           create-lens-dapp
         </Link>
+        components
       </h1>
 
       <div className="flex flex-col gap-2">
@@ -83,6 +88,9 @@ export default function Home() {
         <h2 className="text-center text-green-600 text-xl lg:text-2xl dark:text-green-400">
           Search Publications
         </h2>
+        <h3 className="text-xl">
+          Search results for the word &quot;lens&quot;
+        </h3>
         <SearchPublications query="lens" />
       </div>
 
@@ -90,6 +98,7 @@ export default function Home() {
         <h2 className="text-center text-green-600 text-xl lg:text-2xl dark:text-green-400">
           Search Profiles
         </h2>
+        <h3 className="text-xl">Profiles search results for: &quot;st&quot;</h3>
         <SearchProfiles query="st" />
       </div>
     </main>
