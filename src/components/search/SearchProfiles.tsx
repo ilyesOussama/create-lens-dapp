@@ -19,8 +19,8 @@ const SearchProfiles = ({ query }: { query: string }) => {
     next();
   };
 
-  if (error) return <div>Error</div>;
-  if (loading) return <div>Loading</div>;
+  if (error) return <div className="container">Error</div>;
+  if (loading) return <div className="container">Loading</div>;
 
   return (
     <div className="flex flex-col gap-2 items-center">

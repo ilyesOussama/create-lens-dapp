@@ -12,11 +12,11 @@ const PublicationComments = ({
   });
 
   if (error) {
-    return <div>Error</div>;
+    return <div className="container">Error</div>;
   }
 
   if (loading) {
-    return <div>Loading</div>;
+    return <div className="container">Loading</div>;
   }
 
   return (

@@ -1,7 +1,7 @@
 "use client";
 
 const Error = () => {
-  return <div>Error</div>;
+  return <div className="container">Error</div>;
 };
 
 export default Error;

@@ -10,10 +10,7 @@ import {
 } from "@lens-protocol/react-web";
 import Image from "next/image";
 import { Reactions } from "./actions/Reactions";
-import {
-  formatHandleColors,
-  returnIpfsPathOrUrl,
-} from "@/lib/utils";
+import { formatHandleColors, returnIpfsPathOrUrl } from "@/lib/utils";
 import ReactPlayer from "react-player";
 import ReactMarkdown from "react-markdown";
 import rehypeRaw from "rehype-raw";
@@ -50,7 +47,6 @@ const Publication = ({ publicationId }: { publicationId: PublicationId }) => {
   }
 
   if (publication?.__typename === "Mirror") {
-    const { mirrorOf } = publication;
     publication = publication.mirrorOf;
   }
 
@@ -106,10 +102,9 @@ const Publication = ({ publicationId }: { publicationId: PublicationId }) => {
                 </div>
               )}
               <div className="flex flex-row gap-2">
-                <Link href={`/profile/${publication.profile.id}`}>
-                  <ProfileAvatar profileId={publication.profile.id} />
+                <Link href={`/profile/${publication.profile?.id}`}>
+                  <ProfileAvatar profileId={publication.profile?.id} />
                 </Link>
-                {/* //TODO fix handles links */}
                 <div>
                   <ReactMarkdown rehypePlugins={[rehypeRaw]}>
                     {publication?.metadata?.content &&

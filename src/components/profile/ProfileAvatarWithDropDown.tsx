@@ -23,9 +23,9 @@ const AvatarDropdown = ({
   const { data, error, loading } = useProfile({
     profileId: profileId,
   });
-  if (loading) return <div>Loading</div>;
+  if (loading) return <div className="container">Loading</div>;
 
-  if (error) return <div>Error</div>;
+  if (error) return <div className="container">Error</div>;
 
   return (
     <DropdownMenu>

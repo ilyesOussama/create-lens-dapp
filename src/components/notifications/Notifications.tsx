@@ -17,10 +17,10 @@ const Notifications = ({
   });
 
   if (error) {
-    return <div>error</div>;
+    return <div className="container">error</div>;
   }
   if (loading) {
-    return <div>loading</div>;
+    return <div className="container">loading</div>;
   }
 
   return (
