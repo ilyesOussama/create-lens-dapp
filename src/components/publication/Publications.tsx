@@ -54,38 +54,31 @@ const Publications = ({
     <>
       <div className="mx-auto flex flex-col gap-4 border border-1 border-gray-200 dark:border-gray-700 rounded-sm">
         {publications?.map((publication, index) => {
-          if (publication.__typename === "Mirror") {
-            return (
-              <div
-                key={publication.id}
-                className={cn(
-                  index !== data.length - 1 &&
-                    "border-b border-gray-200 dark:border-gray-700",
-                  "py-2"
-                )}
-              >
-                <div className="flex flex-row gap-2 px-4">
-                  <Repeat />{" "}
-                  <Link href={`/profile/${publication.profile.id}`}>
-                    {publication.profile.name}
-                  </Link>
-                  mirrored
-                </div>
-                <Publication publicationId={publication.mirrorOf.id} />
-              </div>
-            );
-          }
           return (
-            <div
+            <Link
+              href={`/publication/${publication.id}`}
               key={publication.id}
               className={cn(
                 index !== data.length - 1 &&
-                  "border-b border-gray-200 dark:border-gray-700",
+                  "border-b border-gray-200 dark:border-gray-700 hover:bg-gray-100 dark:hover:bg-gray-900 duration-500",
                 "py-2"
               )}
             >
-              <Publication publicationId={publication.id} />
-            </div>
+              {publication.__typename === "Mirror" ? (
+                <div>
+                  <div className="flex flex-row gap-2 px-4">
+                    <Repeat />{" "}
+                    <Link href={`/profile/${publication.profile.id}`}>
+                      {publication.profile.name}
+                    </Link>
+                    mirrored
+                  </div>
+                  <Publication publicationId={publication.mirrorOf.id} />
+                </div>
+              ) : (
+                <Publication publicationId={publication.id} />
+              )}
+            </Link>
           );
         })}
       </div>

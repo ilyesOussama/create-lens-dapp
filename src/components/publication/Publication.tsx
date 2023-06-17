@@ -2,18 +2,16 @@
 "use client";
 
 import {
+  AnyPublication,
   ContentPublication,
   ProfileId,
-  ProfileOwnedByMe,
   PublicationId,
-  useProfilesOwnedByMe,
   usePublication,
 } from "@lens-protocol/react-web";
 import Image from "next/image";
 import { Reactions } from "./actions/Reactions";
 import {
   formatHandleColors,
-  getSubstring,
   returnIpfsPathOrUrl,
 } from "@/lib/utils";
 import ReactPlayer from "react-player";
@@ -24,12 +22,19 @@ import { ProfileAvatar } from "../profile";
 import Link from "next/link";
 import { PublicationSkeleton } from "../ui/skeletons/PublicationSkeleton";
 import { PublisherContext } from "@/context/ProfileContext";
-import { useContext } from "react";
+import { useContext, useEffect, useState } from "react";
+import { Repeat } from "lucide-react";
 
 const Publication = ({ publicationId }: { publicationId: PublicationId }) => {
+  let [publication, setPublication] = useState<AnyPublication | undefined>([]);
+
   const { data, error, loading } = usePublication({
     publicationId,
   });
+
+  useEffect(() => {
+    setPublication(data);
+  }, [data]);
 
   const { profileOwnedByMe: publisher } = useContext(PublisherContext);
 
@@ -44,12 +49,15 @@ const Publication = ({ publicationId }: { publicationId: PublicationId }) => {
     );
   }
 
-  const publicationPressHandler = () => {};
+  if (publication?.__typename === "Mirror") {
+    const { mirrorOf } = publication;
+    publication = publication.mirrorOf;
+  }
 
   let media, cover, mediaOriginalUrl;
 
-  if (data?.metadata?.media?.length) {
-    media = { ...data.metadata.media[0] };
+  if (publication?.metadata?.media?.length) {
+    media = { ...publication.metadata.media[0] };
     if (media && media.original) {
       if (
         media.original.mimeType === "image/jpg" ||
@@ -79,62 +87,74 @@ const Publication = ({ publicationId }: { publicationId: PublicationId }) => {
   }
 
   if (data?.metadata?.cover) {
-    cover = returnIpfsPathOrUrl(data.metadata.cover.original.url);
+    cover = returnIpfsPathOrUrl(publication.metadata.cover.original.url);
   }
 
   return (
-    <Link href={`/publication/${data.id}`}>
-      <div className="max-w-5xl p-4 rounded-sm flex flex-col gap-4">
-        <div className="flex flex-row gap-2">
-          <Link href={`/profile/${data.profile.id}`}>
-            <ProfileAvatar profileId={data.profile.id} />
-          </Link>
+    <>
+      {publication && (
+        <div>
           <div>
-            <ReactMarkdown rehypePlugins={[rehypeRaw]}>
-              {data?.metadata?.content &&
-                formatHandleColors(
-                  getSubstring(data?.metadata?.content, 339),
-                  "/"
-                )}
-            </ReactMarkdown>
+            <div className="max-w-5xl p-4 rounded-sm flex flex-col gap-4">
+              {data?.__typename === "Mirror" && (
+                <div className="flex flex-row gap-2 px-4">
+                  <Repeat />
+                  <Link href={`/profile/${data.profile.id}`}>
+                    {data.profile.name}
+                  </Link>
+                  mirrored
+                </div>
+              )}
+              <div className="flex flex-row gap-2">
+                <Link href={`/profile/${publication.profile.id}`}>
+                  <ProfileAvatar profileId={publication.profile.id} />
+                </Link>
+                {/* //TODO fix handles links */}
+                <div>
+                  <ReactMarkdown rehypePlugins={[rehypeRaw]}>
+                    {publication?.metadata?.content &&
+                      formatHandleColors(publication?.metadata?.content)}
+                  </ReactMarkdown>
+                </div>
+              </div>
+              {media && media.type == "image" && (
+                <div>
+                  <Image
+                    src={mediaOriginalUrl}
+                    width={250}
+                    height={250}
+                    className="w-full h-full rounded-sm"
+                    alt="alt"
+                  />
+                </div>
+              )}
+
+              {media && media.type == "video" && (
+                <div className="flex justify-center">
+                  <ReactPlayer url={mediaOriginalUrl} controls />
+                </div>
+              )}
+              {media && media.type == "audio" && (
+                <div>
+                  <AudioPlayer
+                    cover={cover}
+                    publication={publication}
+                    url={mediaOriginalUrl}
+                  />
+                </div>
+              )}
+            </div>
           </div>
+          {publisher && (
+            <Reactions
+              publisher={publisher}
+              profileId={"0x01821f" as ProfileId}
+              publication={publication as ContentPublication}
+            />
+          )}
         </div>
-        {media && media.type == "image" && (
-          <div>
-            <Image
-              src={mediaOriginalUrl}
-              width={250}
-              height={250}
-              className="w-full h-full rounded-sm"
-              alt="alt"
-            />
-          </div>
-        )}
-
-        {media && media.type == "video" && (
-          <div className="flex justify-center">
-            <ReactPlayer url={mediaOriginalUrl} controls />
-          </div>
-        )}
-        {media && media.type == "audio" && (
-          <div>
-            <AudioPlayer
-              cover={cover}
-              publication={data}
-              url={mediaOriginalUrl}
-            />
-          </div>
-        )}
-
-        {publisher && (
-          <Reactions
-            publisher={publisher}
-            profileId={"0x01821f" as ProfileId}
-            publication={data as ContentPublication}
-          />
-        )}
-      </div>
-    </Link>
+      )}
+    </>
   );
 };
 
