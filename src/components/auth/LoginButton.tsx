@@ -1,5 +1,5 @@
 import { useWalletLogin, useWalletLogout } from "@lens-protocol/react-web";
-import { useEffect } from "react";
+import { useContext, useEffect } from "react";
 import toast from "react-hot-toast";
 import { useAccount, useConnect, useDisconnect } from "wagmi";
 import { InjectedConnector } from "wagmi/connectors/injected";
@@ -7,6 +7,7 @@ import { InjectedConnector } from "wagmi/connectors/injected";
 import { WhenLoggedInWithProfile } from "./WhenLoggedInWithProfile";
 import { WhenLoggedOut } from "./WhenLoggedOut";
 import { Button } from "../ui/button";
+import { PublisherContext } from "@/context/ProfileContext";
 
 const LoginButton = ({ handle }: { handle?: string }) => {
   const {
@@ -15,6 +16,8 @@ const LoginButton = ({ handle }: { handle?: string }) => {
     isPending: isLoginPending,
   } = useWalletLogin();
   const { execute: logout, isPending: isLogoutPending } = useWalletLogout();
+
+  const { setProfileOwnedByMe } = useContext(PublisherContext);
 
   const { isConnected } = useAccount();
   const { disconnectAsync } = useDisconnect();
@@ -39,6 +42,7 @@ const LoginButton = ({ handle }: { handle?: string }) => {
   const onLogoutClick = async () => {
     await logout();
     await disconnectAsync();
+    setProfileOwnedByMe(null);
   };
 
   useEffect(() => {

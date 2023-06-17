@@ -46,7 +46,7 @@ const AvatarDropdown = ({
       </DropdownMenuTrigger>
       <DropdownMenuContent>
         <DropdownMenuItem onClick={logout}>
-          <Link href={`/profile/${data.handle}`}>{data.handle}</Link>
+          <Link href={`/profile/${data.id}`}>{data.handle}</Link>
         </DropdownMenuItem>
         <DropdownMenuSeparator />
         <DropdownMenuItem onClick={logout} className="cursor-pointer">

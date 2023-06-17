@@ -8,7 +8,7 @@ const Navigation = () => {
   return (
     <nav className="flex flex-row justify-between items-center h-16 container">
       <Link href="/">Logo</Link>
-      <div className="flex flex-row">
+      <div className="flex flex-row gap-4">
         <LoginButton />
         <ThemeButton />
       </div>

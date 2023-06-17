@@ -20,21 +20,25 @@ const PublicationComments = ({
   }
 
   return (
-    <ul className="flex flex-col gap-2 rounded-sm border border-gray-200 dark:border-gray-700 p-4">
-      {data &&
-        data?.map(({ id, metadata }, index) => (
-          <li
-            key={id}
-            className={cn(
-              index !== data.length - 1 &&
-                "border-b border-gray-200 dark:border-gray-700",
-              "py-2"
-            )}
-          >
-            <p>{metadata.content}</p>
-          </li>
-        ))}
-    </ul>
+    <>
+      {data && (
+        <ul className="flex flex-col gap-2 rounded-sm border border-gray-200 dark:border-gray-700 p-4">
+          <h2>Comments</h2>
+          {data.map(({ id, metadata }, index) => (
+            <li
+              key={id}
+              className={cn(
+                index !== data.length - 1 &&
+                  "border-b border-gray-200 dark:border-gray-700",
+                "py-2"
+              )}
+            >
+              <p>{metadata.content}</p>
+            </li>
+          ))}
+        </ul>
+      )}
+    </>
   );
 };
 

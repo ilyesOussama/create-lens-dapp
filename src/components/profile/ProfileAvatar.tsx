@@ -1,7 +1,7 @@
 import { ProfileId, useProfile } from "@lens-protocol/react-web";
 
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
-import { convertIpfsUrl } from "@/lib/convertIpfsUrl";
+import { Skeleton } from "../ui/skeleton";
 
 const ProfileAvatar = ({ profileId }: { profileId: ProfileId }) => {
   const {
@@ -11,7 +11,7 @@ const ProfileAvatar = ({ profileId }: { profileId: ProfileId }) => {
   } = useProfile({
     profileId: profileId,
   });
-  if (loading) return <div>Loading</div>;
+  if (loading) return <Skeleton className="h-12 w-12 rounded-full" />;
 
   if (error) return <div>Error</div>;
 

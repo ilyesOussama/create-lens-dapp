@@ -1,4 +1,4 @@
 export * from "./Publication";
 export * from "./Publications";
-export * from "./Reactions";
+export * from "./actions/Reactions";
 export * from "./PublicationComments";

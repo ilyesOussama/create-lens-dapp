@@ -5,6 +5,9 @@ import { mainnet, polygon, polygonMumbai } from "wagmi/chains";
 import { publicProvider } from "wagmi/providers/public";
 import { LensProvider, LensConfig, production } from "@lens-protocol/react-web";
 import { bindings as wagmiBindings } from "@lens-protocol/wagmi";
+
+import { PublisherContextProvider } from "@/context/ProfileContext";
+
 const { provider, webSocketProvider } = configureChains(
   [polygon, mainnet, polygonMumbai],
   [publicProvider()]
@@ -25,7 +28,9 @@ const Providers = ({ children }: { children: React.ReactNode }) => {
   return (
     <WagmiConfig client={client}>
       <LensProvider config={lensConfig}>
-        <ThemeProvider attribute="class">{children}</ThemeProvider>
+        <PublisherContextProvider>
+          <ThemeProvider attribute="class">{children}</ThemeProvider>
+        </PublisherContextProvider>
       </LensProvider>
     </WagmiConfig>
   );

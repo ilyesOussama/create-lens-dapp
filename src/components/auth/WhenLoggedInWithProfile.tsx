@@ -4,8 +4,9 @@ import {
   useActiveWallet,
   WalletData,
 } from "@lens-protocol/react-web";
-import { ReactNode } from "react";
+import { ReactNode, useContext } from "react";
 import { AvatarDropdown } from "../profile";
+import { PublisherContext } from "@/context/ProfileContext";
 
 type LoggedInConfig = {
   wallet: WalletData;
@@ -24,6 +25,10 @@ const WhenLoggedInWithProfile = ({
   const { data: wallet, loading: walletLoading } = useActiveWallet();
   const { data: profile, error, loading: profileLoading } = useActiveProfile();
 
+  const { setProfileOwnedByMe } = useContext(PublisherContext);
+
+  const { data: ProfileOwnedByMed } = useActiveProfile();
+
   if (walletLoading || profileLoading) {
     return null;
   }
@@ -36,7 +41,9 @@ const WhenLoggedInWithProfile = ({
     // TODO guide user to create profile
     return null;
   }
-
+  if (profile && wallet) {
+    setProfileOwnedByMe(ProfileOwnedByMed);
+  }
   return <AvatarDropdown profileId={profile.id} logout={handleLogout} />;
 };
 

@@ -10,7 +10,7 @@ import {
   usePublication,
 } from "@lens-protocol/react-web";
 import Image from "next/image";
-import { Reactions } from "./Reactions";
+import { Reactions } from "./actions/Reactions";
 import {
   formatHandleColors,
   getSubstring,
@@ -22,23 +22,26 @@ import rehypeRaw from "rehype-raw";
 import { AudioPlayer } from "../AudioPlayer";
 import { ProfileAvatar } from "../profile";
 import Link from "next/link";
+import { PublicationSkeleton } from "../ui/skeletons/PublicationSkeleton";
+import { PublisherContext } from "@/context/ProfileContext";
+import { useContext } from "react";
 
-const Publication = ({
-  publicationId,
-  publisher,
-}: {
-  publicationId: PublicationId;
-  publisher?: ProfileOwnedByMe;
-}) => {
+const Publication = ({ publicationId }: { publicationId: PublicationId }) => {
   const { data, error, loading } = usePublication({
     publicationId,
   });
+
+  const { profileOwnedByMe: publisher } = useContext(PublisherContext);
 
   if (error) {
     return <div>Error</div>;
   }
   if (loading) {
-    return <div>Loading</div>;
+    return (
+      <div className="p-4">
+        <PublicationSkeleton />
+      </div>
+    );
   }
 
   const publicationPressHandler = () => {};
@@ -109,7 +112,7 @@ const Publication = ({
         )}
 
         {media && media.type == "video" && (
-          <div className="w-full h-full rounded-sm">
+          <div className="flex justify-center">
             <ReactPlayer url={mediaOriginalUrl} controls />
           </div>
         )}
