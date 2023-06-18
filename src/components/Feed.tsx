@@ -12,6 +12,7 @@ import Link from "next/link";
 import { cn } from "@/lib/utils";
 import { Repeat } from "lucide-react";
 import { Publication } from "./publication";
+import { LoadingSpinner } from "./LoadingSpinner";
 
 const Feed = ({ limit = 10 }: { limit?: number }) => {
   const [feedItems, setFeedItems] = useState<FeedItem[] | undefined>([]);
@@ -33,7 +34,12 @@ const Feed = ({ limit = 10 }: { limit?: number }) => {
     next();
   };
 
-  if (loading) return <div>Loading...</div>;
+  if (loading)
+    return (
+      <div className="w-full flex flex-row items-center justify-center">
+        <LoadingSpinner />
+      </div>
+    );
 
   if (error) return <div>Error: {error.message}</div>;
 

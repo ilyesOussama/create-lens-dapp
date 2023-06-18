@@ -3,6 +3,7 @@ import { PublicationId, useComments } from "@lens-protocol/react-web";
 import React from "react";
 import { Publication } from "./Publication";
 import Link from "next/link";
+import { LoadingSpinner } from "../LoadingSpinner";
 
 const PublicationComments = ({
   publicationId,
@@ -14,11 +15,15 @@ const PublicationComments = ({
   });
 
   if (error) {
-    return <div className="container">Error</div>;
+    return <div className="container mx-auto">Error</div>;
   }
 
   if (loading) {
-    return <div className="container">Loading</div>;
+    return (
+      <div className="container mx-auto">
+        <LoadingSpinner />
+      </div>
+    );
   }
 
   return (

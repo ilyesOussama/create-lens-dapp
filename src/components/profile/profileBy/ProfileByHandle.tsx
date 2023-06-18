@@ -2,6 +2,7 @@ import { ProfileId, useProfile } from "@lens-protocol/react-web";
 import React from "react";
 import { Publications } from "@/components/publication";
 import { ProfileBio } from "@/components/profile";
+import { LoadingSpinner } from "@/components/LoadingSpinner";
 
 const ProfileByHandle = ({ handle }: { handle: string }) => {
   const {
@@ -16,7 +17,11 @@ const ProfileByHandle = ({ handle }: { handle: string }) => {
     return <div>Error</div>;
   }
   if (loading) {
-    return <div>Loading</div>;
+    return (
+      <div className="w-full flex flex-row items-center justify-center">
+        <LoadingSpinner />
+      </div>
+    );
   }
 
   return (

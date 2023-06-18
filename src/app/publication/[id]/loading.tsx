@@ -1,5 +1,11 @@
+import { LoadingSpinner } from "@/components/LoadingSpinner";
+
 const Loading = () => {
-  return <div>loading</div>;
+  return (
+    <div className="container mx-auto">
+      <LoadingSpinner />
+    </div>
+  );
 };
 
 export default Loading;

@@ -8,11 +8,11 @@ import { Publication } from "@/components/publication";
 import CreateComment from "@/components/create/CreateComment";
 import { SearchPublications } from "@/components/search";
 import { SearchProfiles } from "@/components/search";
-import { useContext, useState } from "react";
-import { PublicationSkeleton } from "@/components/ui/skeletons/PublicationSkeleton";
+import { useContext } from "react";
 import { PublisherContext } from "@/context/ProfileContext";
 import { Feed } from "@/components/Feed";
 import Link from "next/link";
+import Notifications from "@/components/notifications/Notifications";
 
 export default function Home() {
   const { profileOwnedByMe: publisher } = useContext(PublisherContext);
@@ -100,6 +100,13 @@ export default function Home() {
         </h2>
         <h3 className="text-xl">Profiles search results for: &quot;st&quot;</h3>
         <SearchProfiles query="st" />
+      </div>
+
+      <div className="flex flex-col gap-2">
+        <h2 className="text-center text-green-600 text-xl lg:text-2xl dark:text-green-400">
+          Notifications
+        </h2>
+        <Notifications />
       </div>
     </main>
   );

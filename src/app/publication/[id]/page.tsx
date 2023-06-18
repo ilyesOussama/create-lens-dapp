@@ -12,8 +12,8 @@ const PublicationPage = () => {
   const { profileOwnedByMe: publisher } = useContext(PublisherContext);
   const { id } = useParams();
   return (
-    <div className="flex flex-col gap-4 container">
-      <div className="border border-1 border-gray-200 dark:border-gray-700 container p-4 rounded-sm">
+    <div className="flex flex-col gap-4 container mx-auto">
+      <div className="border border-1 border-gray-200 dark:border-gray-700 container mx-auto p-4 rounded-sm">
         <Publication publicationId={id as PublicationId} />
       </div>
       {publisher && (

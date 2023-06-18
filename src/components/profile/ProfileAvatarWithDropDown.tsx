@@ -10,6 +10,7 @@ import {
 import { ProfileId, useProfile } from "@lens-protocol/react-web";
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
 import Link from "next/link";
+import { LoadingSpinner } from "../LoadingSpinner";
 
 const AvatarDropdown = ({
   profileId,
@@ -23,9 +24,14 @@ const AvatarDropdown = ({
   const { data, error, loading } = useProfile({
     profileId: profileId,
   });
-  if (loading) return <div className="container">Loading</div>;
+  if (loading)
+    return (
+      <div className="container mx-auto">
+        <LoadingSpinner />
+      </div>
+    );
 
-  if (error) return <div className="container">Error</div>;
+  if (error) return <div className="container mx-auto">Error</div>;
 
   return (
     <DropdownMenu>

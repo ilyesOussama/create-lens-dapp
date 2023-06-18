@@ -3,6 +3,7 @@ import { Profile, useSearchProfiles } from "@lens-protocol/react-web";
 import Link from "next/link";
 import { useEffect, useState } from "react";
 import { Button } from "../ui/button";
+import { LoadingSpinner } from "../LoadingSpinner";
 
 const SearchProfiles = ({ query }: { query: string }) => {
   const {
@@ -19,8 +20,13 @@ const SearchProfiles = ({ query }: { query: string }) => {
     next();
   };
 
-  if (error) return <div className="container">Error</div>;
-  if (loading) return <div className="container">Loading</div>;
+  if (error) return <div className="container mx-auto">Error</div>;
+  if (loading)
+    return (
+      <div className="container mx-auto">
+        <LoadingSpinner />
+      </div>
+    );
 
   return (
     <div className="flex flex-col gap-2 items-center">

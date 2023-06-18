@@ -2,6 +2,7 @@ import { ProfileId, useProfile } from "@lens-protocol/react-web";
 import React from "react";
 import { Publications } from "@/components/publication";
 import { ProfileBio } from "@/components/profile";
+import { LoadingSpinner } from "@/components/LoadingSpinner";
 
 const ProfileById = ({ profileId }: { profileId: ProfileId }) => {
   const {
@@ -13,10 +14,14 @@ const ProfileById = ({ profileId }: { profileId: ProfileId }) => {
   });
 
   if (error) {
-    return <div className="container">Error</div>;
+    return <div className="container mx-auto">Error</div>;
   }
   if (loading) {
-    return <div className="container">Loading</div>;
+    return (
+      <div className="container mx-auto">
+        <LoadingSpinner />
+      </div>
+    );
   }
 
   return (
